@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { Login, NotFound } from './pages'
+import { Dashboard, Login, NotFound } from './pages'
 
 const AppRoutes = () => {
     return (
