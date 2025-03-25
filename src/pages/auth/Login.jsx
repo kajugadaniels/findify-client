@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { loginUser } from '../../api'
 
@@ -89,10 +89,10 @@ const Login = () => {
                                     required
                                 />
                                 <div className=' py-2 text-primary text-right'>
-                                <Link to='forget-password'>
+                                    <Link to='forget-password'>
                                         Forget Password
                                     </Link>
-                                    </div>
+                                </div>
                                 <div className="text-center xl:mt-8 xl:text-left">
                                     <button
                                         type='submit'
@@ -115,7 +115,7 @@ const Login = () => {
                 <div className="h-full col-span-7 2xl:col-span-8 lg:relative before:content-[''] before:absolute before:lg:-ml-10 before:left-0 before:inset-y-0 before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:w-screen before:lg:w-[800%]">
                     <div className="sticky top-0 z-10 flex-col justify-center hidden h-screen ml-16 lg:flex xl:ml-28 2xl:ml-36">
                         <div className="text-[2.6rem] font-medium leading-[1.4] text-white xl:text-5xl xl:leading-[1.2]">
-                            Medical Information <br /> Software
+                            Garage Management Software
                         </div>
                         <div className="mt-5 text-base leading-relaxed text-white/70 xl:text-lg">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
