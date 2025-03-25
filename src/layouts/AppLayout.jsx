@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { X } from 'lucide-react'
-import { Sidebar } from '../components';
+import { Navbar, Sidebar } from '../components';
 
 const AppLayout = () => {
     return (
@@ -16,6 +16,8 @@ const AppLayout = () => {
                     </div>
 
                     <Sidebar />
+
+                    <Navbar />
 
                     <Outlet />
 
