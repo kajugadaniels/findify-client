@@ -39,25 +39,20 @@ const Navbar = ({ toggleSidebar }) => {
     };
 
     const handleLogout = async () => {
-        const token = localStorage.getItem('token');
+        try {
+            // (Optional) If you want to notify the backend to delete the token:
+            await logoutUser()
 
-        if (!token) {
-            toast.error('No active session found.');
-            return;
-        }
-
-        const { success, message } = await logoutUser(token);
-
-        if (success) {
-            toast.success(message || 'Logout successful.');
             // Clear local storage
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            navigate('/');
-        } else {
-            toast.error(message);
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+
+            toast.success('You have successfully logged out.')
+            navigate('/')
+        } catch (error) {
+            toast.error('An error occurred during logout. Please try again.')
         }
-    };
+    }
 
     return (
         <div className="fixed h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px] mt-3.5 inset-x-0 top-0 before:content-[''] before:mx-5 before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur">
@@ -102,10 +97,14 @@ const Navbar = ({ toggleSidebar }) => {
                                         <Users className="stroke-[1] mr-2 h-4 w-4" />
                                         Profile Info
                                     </Link>
-                                    <Link to="" className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                    <button
+                                        type="button"
+                                        onClick={handleLogout}
+                                        className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"
+                                    >
                                         <Power className="stroke-[1] mr-2 h-4 w-4" />
                                         Logout
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { loginUser } from '../../api'
-import Logo from '../../assets/img/logo-icon-b.png'
+import Logo from '../../assets/img/logo-black.png'
 
 const Login = () => {
     const navigate = useNavigate()
