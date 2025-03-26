@@ -1,6 +1,7 @@
 import { ArrowLeft, Car, GaugeCircle } from 'lucide-react'
 import React from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import Logo from '../assets/img/logo-icon-w.png'
 
 const Sidebar = () => {
     const { pathname } = useLocation()
@@ -13,10 +14,8 @@ const Sidebar = () => {
             <div className="flex-none hidden xl:flex items-center z-10 px-5 h-[65px] xl:w-[275px] overflow-hidden relative duration-300 group-[.side-menu--collapsed]:xl:w-[91px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] before:content-[''] before:absolute before:right-0 before:border-r before:border-dashed before:border-white/[0.15] before:h-4/6 before:group-[.side-menu--collapsed.side-menu--on-hover]:xl:hidden">
                 <Link className="flex items-center transition-[margin] duration-300 group-[.side-menu--collapsed.side-menu--on-hover]:xl:ml-0 group-[.side-menu--collapsed]:xl:ml-4" to="/dashboard">
                     <div className="transition-transform ease-in-out group-[.side-menu--collapsed.side-menu--on-hover]:xl:-rotate-180">
-                        <div className="relative h-[18px] w-[18px] -rotate-45 [&_div]:bg-white">
-                            <div className="absolute inset-y-0 left-0 my-auto h-[75%] w-[21%] rounded-full opacity-50"></div>
-                            <div className="absolute inset-0 m-auto h-[120%] w-[21%] rounded-full"></div>
-                            <div className="absolute inset-y-0 right-0 my-auto h-[75%] w-[21%] rounded-full opacity-50"></div>
+                        <div className="relative h-[18px] w-[18px] [&_div]:bg-white">
+                            <img src={Logo} />
                         </div>
                     </div>
                     <div className="ml-3.5 font-medium text-white transition-opacity group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0">
