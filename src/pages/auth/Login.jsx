@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { loginUser } from '../../api'
+import Logo from '../../assets/img/logo-icon-b.png'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -58,7 +59,7 @@ const Login = () => {
                 <div className="relative z-50 h-full col-span-12 p-7 sm:p-14 bg-white rounded-2xl lg:bg-transparent lg:pr-10 lg:col-span-5 xl:pr-24 2xl:col-span-4 lg:p-0 before:content-[''] before:absolute before:inset-0 before:-mb-3.5 before:bg-white/40 before:rounded-2xl before:mx-5">
                     <div className="relative z-10 flex flex-col justify-center w-full h-full py-2 lg:py-32">
                         <div className="flex items-center justify-center" style={{ width: '200px', height: '200px' }}>
-                            <img src='/logo-black.png' alt="Logo" />
+                            <img src={Logo} alt="Logo" />
                         </div>
                         <div>
                             <div className="text-2xl font-medium">Sign In</div>
