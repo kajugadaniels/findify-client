@@ -86,11 +86,17 @@ const Navbar = ({ toggleSidebar }) => {
                             </div>
                         </div>
                         <div className="dropdown relative ml-5">
-                            <button className="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-slate-200/70">
+                            <button
+                                onClick={toggleDropdown}
+                                aria-expanded={dropdownOpen}
+                                className="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-slate-200/70"
+                            >
                                 <img src="https://cdn.vectorstock.com/i/1000v/66/13/default-avatar-profile-icon-social-media-user-vector-49816613.jpg" alt="Garagify" />
                             </button>
-                            <div className="dropdown-menu absolute z-[9999] hidden">
-                                <div data-tw-merge="" className="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-1 w-56">
+                            <div
+                                className={`dropdown-menu absolute right-0 mt-2 z-[9999] ${dropdownOpen ? 'block' : 'hidden'}`}
+                            >
+                                <div className="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-1 w-56">
                                     <div className="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400"></div>
                                     <Link to="" className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
                                         <Users className="stroke-[1] mr-2 h-4 w-4" />
