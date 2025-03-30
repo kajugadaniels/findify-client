@@ -7,7 +7,7 @@ import Logo from '../../assets/img/logo-black.png'
 const Login = () => {
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
-    const [email, setEmail] = useState('')
+    const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
 
     // New: track loading state
@@ -32,7 +32,7 @@ const Login = () => {
 
         try {
             setLoading(true) // Start loading
-            const response = await loginUser(email, password)
+            const response = await loginUser(identifier, password)
             // response => { token, user, message, etc. }
 
             // Store token
@@ -67,18 +67,20 @@ const Login = () => {
                                 Welcome to Garagify.
                             </div>
                             <form onSubmit={handleLogin} className="mt-6">
-                                <label className="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right">Email
+                                <label className="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right">
+                                    Email Address, Phone Number and Username
                                 </label>
                                 <input
                                     type="text"
-                                    placeholder="Enter email address"
+                                    placeholder="Enter email address, phone number or username"
                                     className="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm shadow-sm placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 block rounded-[0.6rem] border-slate-300/80 px-4 py-3.5"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={identifier}
+                                    onChange={(e) => setIdentifier(e.target.value)}
                                     disabled={loading}
                                     required
                                 />
-                                <label className="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right mt-4">Password
+                                <label className="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right mt-4">
+                                    Password
                                 </label>
                                 <input
                                     type="password"

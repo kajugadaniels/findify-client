@@ -38,9 +38,9 @@ apiClient.interceptors.response.use(
     }
 );
 
-export const loginUser = async (email, password) => {
+export const loginUser = async (identifier, password) => {
     try {
-        const response = await apiClient.post('/auth/login/', { email, password });
+        const response = await apiClient.post('/auth/login/', { identifier, password });
         return response.data;
     } catch (error) {
         throw error;
