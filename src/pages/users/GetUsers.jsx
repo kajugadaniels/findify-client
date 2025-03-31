@@ -1,7 +1,22 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ArrowDownWideNarrow, CheckSquare, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Download, FileBarChart, Key, MoreVertical, PenLine, Search, Trash2 } from 'lucide-react'
 
 const GetUsers = () => {
+    const navigate = useNavigate();
+
+    const handleShowUser = (userId) => {
+        navigate(`/user/${userId}`);
+    };
+
+    const handleEditUser = (userId) => {
+        navigate(`/user/edit/${userId}`);
+    };
+
+    const handleDeleteUser = async (userId) => {
+        toast.info(`Delete functionality not implemented yet for ID: ${userId}`)
+    };
+
     return (
         <div className="content transition-[margin,width] duration-100 xl:pl-3.5 pt-[65px] pb-16 relative z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
             <div className="mt-14 px-5">
@@ -12,7 +27,10 @@ const GetUsers = () => {
                                 <div className="text-base font-medium group-[.mode--light]:text-white">Users
                                 </div>
                                 <div className="flex flex-col gap-x-3 gap-y-2 sm:flex-row md:ml-auto">
-                                    <button className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary group-[.mode--light]:!border-transparent group-[.mode--light]:!bg-white/[0.12] group-[.mode--light]:!text-slate-200">
+                                    <button
+                                        className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary group-[.mode--light]:!border-transparent group-[.mode--light]:!bg-white/[0.12] group-[.mode--light]:!text-slate-200"
+                                        onClick={() => navigate('/user/add')}
+                                    >
                                         <PenLine className="mr-2 h-4 w-4 stroke-[1.3]" />
                                         Add New User
                                     </button>
@@ -199,14 +217,20 @@ const GetUsers = () => {
                                                                 </button>
                                                                 <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" className="dropdown-menu absolute z-[9999] hidden">
                                                                     <div className="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                                                        <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                                                        <button
+                                                                            className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"
+                                                                            onClick={() => handleEditUser(menuId)}
+                                                                        >
                                                                             <CheckSquare className="stroke-[1] mr-2 h-4 w-4" />
                                                                             Edit
-                                                                        </a>
-                                                                        <a className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item text-danger">
+                                                                        </button>
+                                                                        <button
+                                                                            className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item text-danger"
+                                                                            onClick={() => handleDeleteUser(menuId)}
+                                                                        >
                                                                             <Trash2 className="stroke-[1] mr-2 h-4 w-4" />
                                                                             Delete
-                                                                        </a>
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
