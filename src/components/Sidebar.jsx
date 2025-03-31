@@ -1,4 +1,4 @@
-import { ArrowLeft, Car, GaugeCircle } from 'lucide-react'
+import { ArrowLeft, Car, GaugeCircle, Users } from 'lucide-react'
 import React from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from '../assets/img/logo-icon-w.png'
@@ -8,6 +8,7 @@ const Sidebar = () => {
 
     // Check active state for each sidebar item.
     const isDashboardActive = pathname === '/dashboard'
+    const isUserActive = pathname.startsWith('/users') || pathname.startsWith('/user')
 
     return (
         <div className="side-menu__content h-full box border-transparent rounded-none xl:rounded-xl bg-gradient-to-b from-theme-1 to-theme-2 z-20 relative w-[275px] duration-300 transition-[width] group-[.side-menu--collapsed]:xl:w-[91px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:shadow-[6px_0_12px_-4px_#0000000f] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] overflow-hidden flex flex-col after:content-[''] after:absolute after:inset-0 after:-mr-4 after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-20rem] after:bg-no-repeat">
@@ -39,6 +40,17 @@ const Sidebar = () => {
                             >
                                 <GaugeCircle className="stroke-[1] w-5 h-5 side-menu__link__icon" />
                                 <div className="side-menu__link__title">Dashboard</div>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/users"
+                                className={() =>
+                                    `side-menu__link ${isUserActive ? 'side-menu__link--active' : ''}`
+                                }
+                            >
+                                <Users className="stroke-[1] w-5 h-5 side-menu__link__icon" />
+                                <div className="side-menu__link__title">Users</div>
                             </NavLink>
                         </li>
                     </ul>
