@@ -12,7 +12,8 @@ const EditUser = () => {
                     <div className="grid grid-cols-12 gap-x-6 gap-y-10">
                         <div className="col-span-12 sm:col-span-10 sm:col-start-2">
                             <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
-                                <div className="text-base font-medium group-[.mode--light]:text-white">Users
+                                <div className="text-base font-medium group-[.mode--light]:text-white">
+                                    Update User
                                 </div>
                                 <div className="flex flex-col gap-x-3 gap-y-2 sm:flex-row md:ml-auto">
                                     <button

@@ -1,4 +1,4 @@
-import { Pencil, Trash2, UploadIcon, User } from 'lucide-react'
+import { Eye, Pencil, Trash2, UploadIcon, User } from 'lucide-react'
 import React from 'react'
 
 const AddUser = () => {
@@ -8,6 +8,20 @@ const AddUser = () => {
                 <div className="container">
                     <div className="grid grid-cols-12 gap-x-6 gap-y-10">
                         <div className="col-span-12 sm:col-span-10 sm:col-start-2">
+                            <div className="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+                                <div className="text-base font-medium group-[.mode--light]:text-white">
+                                    Add New User
+                                </div>
+                                <div className="flex flex-col gap-x-3 gap-y-2 sm:flex-row md:ml-auto">
+                                    <button
+                                        className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary group-[.mode--light]:!border-transparent group-[.mode--light]:!bg-white/[0.12] group-[.mode--light]:!text-slate-200"
+                                        onClick={() => navigate('/users')}
+                                    >
+                                        <Eye className="mr-2 h-4 w-4 stroke-[1.3]" />
+                                        Go Back
+                                    </button>
+                                </div>
+                            </div>
                             <div className="mt-7">
                                 <div className="box box--stacked flex flex-col">
                                     <div className="p-7">
