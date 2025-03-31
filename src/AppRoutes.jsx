@@ -16,7 +16,7 @@ const AppRoutes = () => {
                     <Route path="/users" element={<GetUsers />} />
                     <Route path="/user/add" element={<AddUser />} />
                     <Route path="/user/:id" element={<UserDetails />} />
-                    <Route path="/user/:id/edit" element={<EditUser />} />
+                    <Route path="/user/edit/:id" element={<EditUser />} />
                 </Route>
             </Route>
 
