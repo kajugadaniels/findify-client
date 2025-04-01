@@ -2,12 +2,14 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { AddUser, Dashboard, EditUser, GetUsers, Login, NotFound, UserDetails } from './pages'
+import { AddUser, Dashboard, EditUser, GetUsers, Login, NotFound, UserDetails, Welcome } from './pages'
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path='/' element={<Login />} />
+            <Route path='/' element={<Welcome />} />
+
+            <Route path='/login' element={<Login />} />
 
             <Route element={<ProtectedRoute />}>
                 <Route element={<AppLayout />}>
