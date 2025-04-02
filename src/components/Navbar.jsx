@@ -18,8 +18,7 @@ const Navbar = ({ toggleSidebar }) => {
                 if (response && response.user) {
                     const user = response.user;
                     setUserName(user.name || 'User');
-                    // Adjust based on the actual field name returned (e.g., user.role or user.role_name)
-                    setUserRole(user.role || user.role_name || 'Role');
+                    setUserRole(user.role || 'Role');
                     localStorage.setItem('user', JSON.stringify(user));
                 }
             } catch (error) {
@@ -80,8 +79,8 @@ const Navbar = ({ toggleSidebar }) => {
                     <div className="flex flex-1 items-center">
                         <div className="ml-auto flex items-center gap-1">
                             <div className="mr-5 text-right">
-                                <div className="font-bold text-primary text-md">Admin</div>
-                                <span className="text-sm text-secondary">Role</span>
+                                <div className="font-bold text-primary text-md">{userName}</div>
+                                <span className="text-sm text-secondary">{userRole}</span>
                             </div>
                         </div>
                         <div className="dropdown relative ml-5">
