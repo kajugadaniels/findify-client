@@ -48,6 +48,15 @@ export const loginUser = async (identifier, password) => {
     }
 };
 
+export const registerUser = async (registerData) => {
+    try {
+        const response = await apiClient.post('/auth/register/', registerData);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const logoutUser = async () => {
     try {
         const refreshToken = localStorage.getItem('refresh');
