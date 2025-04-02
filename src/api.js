@@ -102,3 +102,12 @@ export const passwordResetConfirm = async (data) => {
         throw error;
     }
 };
+
+export const updatePersonalProfile = async (userId, updateData) => {
+    try {
+        const response = await apiClient.patch(`/customer/update/${userId}/`, updateData);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
