@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { updateUserProfile } from '../api';
 import { Info, Image, Globe, User, Pencil, UploadIcon } from 'lucide-react';
 import { toast } from 'react-toastify';
@@ -10,7 +10,9 @@ const UpdateUserProfileForm = ({ user }) => {
         phone_number: '',
         image: null,
     });
+    const [previewImage, setPreviewImage] = useState(null);
     const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef(null);
 
     useEffect(() => {
         if (user) {
@@ -20,16 +22,33 @@ const UpdateUserProfileForm = ({ user }) => {
                 phone_number: user.phone_number || '',
                 image: user.image || null,
             });
+            if (user.image) {
+                setPreviewImage(user.image);
+            }
         }
     }, [user]);
 
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        if (name === "image" && files.length > 0) {
-            setFormData({ ...formData, image: files[0] });
-        } else {
-            setFormData({ ...formData, [name]: value });
+    // Trigger file input click
+    const handleUploadClick = (e) => {
+        e.preventDefault();
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
         }
+    };
+
+    // Handle file input change and set preview
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData((prev) => ({ ...prev, image: file }));
+            const previewURL = URL.createObjectURL(file);
+            setPreviewImage(previewURL);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = async (e) => {
@@ -60,15 +79,36 @@ const UpdateUserProfileForm = ({ user }) => {
                     <div className="w-full h-full relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-texture-white before:-mt-[50rem] after:content-[''] after:absolute after:inset-0 after:bg-texture-white after:-mt-[50rem]"></div>
                     <div className="absolute inset-x-0 top-0 mx-auto mt-36 h-32 w-32">
                         <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-primary/10 bg-primary/5">
+                        {previewImage ? (
+                            <img
+                                src={previewImage}
+                                alt="Profile Preview"
+                                className="h-full w-full object-cover rounded-full"
+                            />
+                        ) : (
                             <User className="-mt-1.5 h-[65%] w-[65%] fill-slate-300/70 stroke-slate-400/50 stroke-[0.5]" />
-                            <span className="box absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full">
+                        )}
+                            <button
+                                className="box absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full"
+                                onClick={handleUploadClick}
+                            >
                                 <Pencil className="h-3.5 w-3.5 stroke-[1.3] text-slate-500" />
-                            </span>
+                            </button>
+                            <input 
+                                type="file" 
+                                ref={fileInputRef} 
+                                accept="image/*" 
+                                className="hidden" 
+                                onChange={handleImageChange}
+                            />
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-y-3 rounded-[0.6rem] bg-slate-50 p-5 pt-12 sm:flex-row sm:items-end">
-                    <button data-tw-merge="" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 border-primary/50 sm:ml-auto">
+                    <button
+                        className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 border-primary/50 sm:ml-auto"
+                        onClick={handleUploadClick}
+                    >
                         <Image className="mr-2.5 h-4 w-4 stroke-[1.3]" />
                         Upload Cover
                     </button>
