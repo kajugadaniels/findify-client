@@ -76,6 +76,15 @@ export const updateUserProfile = async (updateData) => {
     }
 };
 
+export const updatePassword = async (passwordData) => {
+    try {
+        const response = await apiClient.post('/auth/update-password/', passwordData);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 export const verifyToken = async () => {
     try {
         const response = await apiClient.get('/auth/verify_token/');
