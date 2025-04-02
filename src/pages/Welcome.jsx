@@ -1,9 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/img/logo-icon-w.png'
-import { FlagTriangleRight, FolderClock, FolderSync, Handshake, KeySquare, LogIn, ShieldCheck, PlayCircleIcon, Smartphone } from 'lucide-react'
+import { FlagTriangleRight, FolderClock, FolderSync, Handshake, KeySquare, LogIn, ShieldCheck, PlayCircleIcon, Smartphone, LogOut, UserCog } from 'lucide-react'
+import { logoutUser, verifyToken } from '../api';
+import { toast } from 'react-toastify';
 
 const Welcome = () => {
+    const navigate = useNavigate();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Check for token validity on mount.
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await verifyToken();
+                if (response && response.user) {
+                    setIsAuthenticated(true);
+                } else {
+                    setIsAuthenticated(false);
+                }
+            } catch (error) {
+                setIsAuthenticated(false);
+            }
+        };
+
+        checkAuth();
+    }, []);
+
+    // Logout handler: clears tokens and navigates to landing page.
+    const handleLogout = async () => {
+        try {
+            await logoutUser();
+            localStorage.removeItem('token');
+            localStorage.removeItem('refresh');
+            localStorage.removeItem('user');
+            toast.success('You have successfully logged out.');
+            navigate('/');
+        } catch (error) {
+            toast.error('An error occurred during logout. Please try again.');
+        }
+    };
+
     return (
         <div className="landing-page relative before:content-[''] before:w-screen before:h-screen before:fixed before:bg-slate-100 before:z-[-1]">
             <div className="background relative group overflow-x-hidden scroll-smooth before:content-[''] before:w-screen before:h-screen before:rounded-[0_0_50%] [&.background--hidden]:before:from-slate-100 [&.background--hidden]:before:to-transparent before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:absolute before:z-[-1] before:transition-colors before:ease-in-out before:duration-300 after:content-[''] after:z-[-1] after:h-screen after:w-screen [&.background--hidden]:after:opacity-0 after:transition-[opacity,height] after:ease-in-out after:duration-300 after:top-0 after:fixed after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-25rem] after:bg-no-repeat">
@@ -37,14 +74,32 @@ const Welcome = () => {
                             </Link>
                         </div>
                         <div className="relative flex gap-2.5">
-                            <Link to='/login' className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white">
-                                <LogIn className="mr-2 stroke-[1] h-5 w-5" />
-                                Sign In
-                            </Link>
-                            <Link to='/register' className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white">
-                                <KeySquare className="mr-2 stroke-[1] h-5 w-5" />
-                                Sign Up
-                            </Link>
+                        {isAuthenticated ? (
+                            <>
+                                <Link to='/profile' className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white">
+                                    <UserCog className="mr-2 stroke-[1] h-5 w-5" />
+                                    Profile
+                                </Link>
+                                <button
+                                    className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white"
+                                    onClick={handleLogout}
+                                >
+                                    <LogOut className="mr-2 stroke-[1] h-5 w-5" />
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to='/login' className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white">
+                                    <LogIn className="mr-2 stroke-[1] h-5 w-5" />
+                                    Sign In
+                                </Link>
+                                <Link to='/register' className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed rounded-full border-white/10 bg-white/10 px-5 text-white">
+                                    <KeySquare className="mr-2 stroke-[1] h-5 w-5" />
+                                    Sign Up
+                                </Link>
+                            </>
+                        )}
                         </div>
                     </div>
                 </div>
