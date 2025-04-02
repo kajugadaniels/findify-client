@@ -69,7 +69,7 @@ export const logoutUser = async () => {
 
 export const updateUserProfile = async (updateData) => {
     try {
-        const response = await apiClient.patch('/auth/profile-update/', updateData);
+        const response = await apiClient.patch('/auth/profile/update/', updateData);
         return response.data;
     } catch (error) {
         throw error;
