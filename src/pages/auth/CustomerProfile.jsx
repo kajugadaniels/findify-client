@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updatePersonalProfile, verifyToken } from '../api';
+import { updatePersonalProfile, verifyToken } from '../../api';
 import { toast } from 'react-toastify';
 
 const CustomerProfile = () => {
@@ -63,7 +63,7 @@ const CustomerProfile = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block mb-1">ID Number</label>
-                    <input 
+                    <input
                         type="text"
                         name="id_number"
                         value={formData.id_number}
@@ -74,7 +74,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Bio</label>
-                    <textarea 
+                    <textarea
                         name="bio"
                         value={formData.bio}
                         onChange={handleChange}
@@ -83,7 +83,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Country</label>
-                    <input 
+                    <input
                         type="text"
                         name="country"
                         value={formData.country}
@@ -94,7 +94,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">District</label>
-                    <input 
+                    <input
                         type="text"
                         name="district"
                         value={formData.district}
@@ -105,7 +105,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Sector</label>
-                    <input 
+                    <input
                         type="text"
                         name="sector"
                         value={formData.sector}
@@ -116,7 +116,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Cell</label>
-                    <input 
+                    <input
                         type="text"
                         name="cell"
                         value={formData.cell}
@@ -127,7 +127,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Village</label>
-                    <input 
+                    <input
                         type="text"
                         name="village"
                         value={formData.village}
@@ -138,7 +138,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Date of Birth</label>
-                    <input 
+                    <input
                         type="date"
                         name="date_of_birth"
                         value={formData.date_of_birth}
@@ -148,7 +148,7 @@ const CustomerProfile = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block mb-1">Gender</label>
-                    <select 
+                    <select
                         name="gender"
                         value={formData.gender}
                         onChange={handleChange}

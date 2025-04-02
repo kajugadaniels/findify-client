@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateVendorProfile, verifyToken } from '../api';
+import { updateVendorProfile, verifyToken } from '../../api';
 import { toast } from 'react-toastify';
 
 const VendorProfile = () => {

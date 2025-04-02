@@ -2,6 +2,8 @@ export { default as Welcome } from './Welcome'
 
 export { default as Login } from './auth/Login'
 export { default as Register } from './auth/Register'
+export { default as CustomerProfile } from './auth/CustomerProfile'
+export { default as VendorProfile } from './auth/VendorProfile'
 
 export { default as Dashboard } from './Dashboard'
 
