@@ -84,3 +84,12 @@ export const verifyToken = async () => {
         throw error;
     }
 };
+
+export const passwordResetRequest = async (email) => {
+    try {
+        const response = await apiClient.post('/auth/password-reset-request/', { email });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
