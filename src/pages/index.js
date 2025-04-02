@@ -4,6 +4,7 @@ export { default as Login } from './auth/Login'
 export { default as Register } from './auth/Register'
 export { default as Profile } from './auth/Profile'
 export { default as ForgetPassword } from './auth/ForgetPassword'
+export { default as ResetPassword } from './auth/ResetPassword'
 export { default as CustomerProfile } from './auth/CustomerProfile'
 export { default as VendorProfile } from './auth/VendorProfile'
 
