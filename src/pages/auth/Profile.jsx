@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppWindow, UserCog2, Key, ExternalLink, Info, Image, Globe } from 'lucide-react';
+import { AppWindow, UserCog2, Key, ExternalLink } from 'lucide-react';
 import { verifyToken } from '../../api';
 import { toast } from 'react-toastify';
 import { ChangePasswordForm, CustomerProfileForm, UpdateUserProfileForm, VendorProfileForm } from '../../components';
