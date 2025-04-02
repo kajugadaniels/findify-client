@@ -66,9 +66,17 @@ const Login = () => {
                             </div>
                         </div>
                         <div>
-                            <div className="text-2xl font-medium">Sign In</div>
+                            <div className="text-2xl font-medium">
+                                Sign In
+                            </div>
                             <div className="mt-2.5 text-slate-600">
-                                Welcome to Garagify.
+                                Don't have an account?
+                                <button
+                                    className="font-medium text-primary ml-1"
+                                    onClick={() => navigate('/register')}
+                                >
+                                    Sign Up
+                                </button>
                             </div>
                             <form onSubmit={handleLogin} className="mt-6">
                                 <label className="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right">
@@ -109,12 +117,6 @@ const Login = () => {
                                         disabled={loading}
                                     >
                                         {loading ? 'Signing In...' : 'Sign In'}
-                                    </button>
-                                    <button
-                                        className="transition duration-200 border shadow-sm inline-flex items-center justify-center px-3 font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 rounded-full mt-3 w-full bg-white/70 py-3.5"
-                                        onClick={() =>  navigate('/register')}
-                                    >
-                                        Sign Up
                                     </button>
                                 </div>
                             </form>
