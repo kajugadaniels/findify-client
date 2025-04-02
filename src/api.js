@@ -111,3 +111,12 @@ export const updatePersonalProfile = async (userId, updateData) => {
         throw error;
     }
 };
+
+export const updateVendorProfile = async (userId, updateData) => {
+    try {
+        const response = await apiClient.patch(`/vendor/update/${userId}/`, updateData);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
