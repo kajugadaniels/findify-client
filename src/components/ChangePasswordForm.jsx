@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { updatePassword } from '../api';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ChangePasswordForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         old_password: '',
         new_password: '',
@@ -22,7 +24,7 @@ const ChangePasswordForm = () => {
         }
         setLoading(true);
         try {
-            // Attach refresh token automatically from localStorage if available.
+            // Attach refresh token from localStorage if available.
             const refreshToken = localStorage.getItem('refresh');
             const payload = { 
                 old_password: formData.old_password, 
@@ -31,7 +33,12 @@ const ChangePasswordForm = () => {
                 refresh_token: refreshToken 
             };
             await updatePassword(payload);
-            toast.success("Password updated successfully. Please log in again.");
+            toast.success("Password updated successfully. You have been logged out.");
+            // Clear tokens and user info, then redirect to login.
+            localStorage.removeItem('token');
+            localStorage.removeItem('refresh');
+            localStorage.removeItem('user');
+            navigate('/login');
         } catch (error) {
             toast.error("Failed to update password.");
         } finally {
