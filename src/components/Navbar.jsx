@@ -86,7 +86,7 @@ const Navbar = ({ toggleSidebar }) => {
                                 aria-expanded={dropdownOpen}
                                 className="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-slate-200/70"
                             >
-                                <img src="https://cdn.vectorstock.com/i/1000v/66/13/default-avatar-profile-icon-social-media-user-vector-49816613.jpg" alt="Garagify" />
+                                <img src="https://cdn.vectorstock.com/i/1000v/66/13/default-avatar-profile-icon-social-media-user-vector-49816613.jpg" alt="Findify" />
                             </button>
                             <div
                                 className={`dropdown-menu absolute right-0 mt-2 z-[9999] ${dropdownOpen ? 'block' : 'hidden'}`}
