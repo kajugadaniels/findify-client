@@ -1,4 +1,5 @@
 import React from 'react'
+import { AppWindow, ExternalLink, Info } from 'lucide-react'
 
 const Profile = () => {
     return (
@@ -12,7 +13,7 @@ const Profile = () => {
                                 </div>
                                 <div className="flex flex-col gap-x-3 gap-y-2 sm:flex-row md:ml-auto">
                                     <button data-tw-merge="" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary group-[.mode--light]:!border-transparent group-[.mode--light]:!bg-white/[0.12] group-[.mode--light]:!text-slate-200">
-                                        <i data-tw-merge="" data-lucide="external-link" className="mr-3 h-4 w-4 stroke-[1.3]"></i>
+                                        <ExternalLink className="mr-3 h-4 w-4 stroke-[1.3]" />
                                         Go to My Profile
                                     </button>
                                 </div>
@@ -21,10 +22,9 @@ const Profile = () => {
                                 <div className="relative col-span-12 xl:col-span-3">
                                     <div className="sticky top-[104px]">
                                         <div className="box box--stacked flex flex-col px-5 pb-6 pt-5">
-                                            <a href="razor-settings.html" className="flex items-center py-3 first:-mt-3 last:-mb-3 [&.active]:text-primary [&.active]:font-medium hover:text-primary active">
-                                                <i data-tw-merge="" data-lucide="app-window" className="mr-3 h-4 w-4 stroke-[1.3]"></i>
+                                            <a href="#" className="flex items-center py-3 first:-mt-3 last:-mb-3 [&.active]:text-primary [&.active]:font-medium hover:text-primary active">
+                                                <AppWindow className="mr-3 h-4 w-4 stroke-[1.3]" />
                                                 Profile Info
-
                                             </a>
                                         </div>
                                     </div>
@@ -46,11 +46,11 @@ const Profile = () => {
                                                     Who can see your profile photo?
 
                                                     <span data-placement="top" title="Low" className="tooltip cursor-pointer ml-1.5">
-                                                        <i data-tw-merge="" data-lucide="info" className="h-3.5 w-3.5 stroke-[1.3] text-slate-500"></i>
+                                                        <Info className="h-3.5 w-3.5 stroke-[1.3] text-slate-500" />
                                                     </span>
                                                 </label>
                                                 <div className="relative mt-2.5">
-                                                    <i data-tw-merge="" data-lucide="globe" className="absolute inset-y-0 left-0 z-10 my-auto ml-3 h-4 w-4 stroke-[1.3]"></i>
+                                                    <i data-tw-merge="" data-lucide="globe" className="absolute inset-y-0 left-0 z-10 my-auto ml-3 h-4 w-4 stroke-[1.3]" />
                                                     <select data-tw-merge="" className="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 mr-3 rounded-[0.5rem] pl-9 sm:w-44">
                                                         <option value="custom-date">Anyone</option>
                                                         <option value="daily">Only you</option>
@@ -58,7 +58,7 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                             <button data-tw-merge="" className="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 border-primary/50 sm:ml-auto">
-                                                <i data-tw-merge="" data-lucide="image" className="mr-2.5 h-4 w-4 stroke-[1.3]"></i>
+                                                <i data-tw-merge="" data-lucide="image" className="mr-2.5 h-4 w-4 stroke-[1.3]" />
                                                 Upload Cover
                                             </button>
                                         </div>
