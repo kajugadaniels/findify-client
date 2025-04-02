@@ -19,7 +19,19 @@ const ForgetPassword = () => {
             localStorage.setItem('passwordResetEmail', email);
             navigate('/reset-password');
         } catch (error) {
-            toast.error("Failed to send OTP. Please check your email.");
+            let errorMessage = "Failed to send OTP. Please check your email.";
+            if (error.response && error.response.data) {
+                if (error.response.data.detail) {
+                    errorMessage = error.response.data.detail;
+                } else if (error.response.data.errors) {
+                    // If errors is an object, join all error messages
+                    const errors = error.response.data.errors;
+                    errorMessage = Object.keys(errors)
+                        .map((field) => `${field}: ${errors[field].join(", ")}`)
+                        .join(" ");
+                }
+            }
+            toast.error(errorMessage);
         } finally {
             setLoading(false);
         }
