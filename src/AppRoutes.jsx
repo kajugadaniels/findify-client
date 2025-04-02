@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { AddUser, Dashboard, EditUser, GetUsers, Login, NotFound, UserDetails, Welcome } from './pages'
+import { AddUser, Dashboard, EditUser, GetUsers, Login, NotFound, Register, UserDetails, Welcome } from './pages'
 
 const AppRoutes = () => {
     return (
@@ -10,6 +10,7 @@ const AppRoutes = () => {
             <Route path='/' element={<Welcome />} />
 
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
 
             <Route element={<ProtectedRoute />}>
                 <Route element={<AppLayout />}>
