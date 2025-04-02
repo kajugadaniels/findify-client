@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { updatePersonalProfile } from '../api';
 import { toast } from 'react-toastify';
 
-const CustomerProfileForm = ({ userId }) => {
+const CustomerProfileForm = ({ userId, extendedProfile }) => {
+    // Initialize state using extendedProfile data if available.
     const [formData, setFormData] = useState({
-        id_number: '',
-        bio: '',
-        country: '',
-        district: '',
-        sector: '',
-        cell: '',
-        village: '',
-        date_of_birth: '',
-        gender: '',
+        id_number: extendedProfile.id_number || '',
+        bio: extendedProfile.bio || '',
+        country: extendedProfile.country || '',
+        district: extendedProfile.district || '',
+        sector: extendedProfile.sector || '',
+        cell: extendedProfile.cell || '',
+        village: extendedProfile.village || '',
+        date_of_birth: extendedProfile.date_of_birth || '',
+        gender: extendedProfile.gender || '',
     });
     const [loading, setLoading] = useState(false);
+
+    // If extendedProfile changes, update state accordingly.
+    useEffect(() => {
+        if (extendedProfile) {
+            setFormData({
+                id_number: extendedProfile.id_number || '',
+                bio: extendedProfile.bio || '',
+                country: extendedProfile.country || '',
+                district: extendedProfile.district || '',
+                sector: extendedProfile.sector || '',
+                cell: extendedProfile.cell || '',
+                village: extendedProfile.village || '',
+                date_of_birth: extendedProfile.date_of_birth || '',
+                gender: extendedProfile.gender || '',
+            });
+        }
+    }, [extendedProfile]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
