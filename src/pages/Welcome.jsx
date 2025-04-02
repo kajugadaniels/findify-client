@@ -64,6 +64,7 @@ const Welcome = () => {
                                 </button>
                             </Link>
                         </div>
+
                         <div className="flex w-full flex-col items-center">
                             <div className="text-3xl font-medium relative">
                                 <div className="z-5 relative text-center text-white">
@@ -71,7 +72,7 @@ const Welcome = () => {
                                 </div>
                             </div>
                             <div className="z-5 relative mt-4 text-center text-white text-slate-500/80">
-                            Findify offers simple tools to verify devices, track ownership, and report stolen <br /> electronics — helping you buy, sell, and protect with confidence.
+                                Findify offers simple tools to verify devices, track ownership, and report stolen <br /> electronics — helping you buy, sell, and protect with confidence.
                             </div>
                             <div className="-mx-2.5 mt-10 px-20">
                                 <div className="flex flex-wrap -mx-2">
@@ -152,6 +153,27 @@ const Welcome = () => {
                                                 Check a seller’s history and their listed devices to make sure you're dealing with a trusted and verified <br /> source.
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="-mt-24 w-full px-20">
+                            <div className="box box--stacked p-1">
+                                <div className="relative px-20 py-20 overflow-hidden bg-gradient-to-b from-theme-1 to-theme-2 rounded-[0.6rem] after:content-[''] after:h-full after:w-full after:ease-in-out after:duration-300 after:top-0 after:absolute after:left-0 after:bg-texture-white after:bg-contain after:bg-[center_-5rem] after:bg-no-repeat">
+                                    <div className="relative z-10 ml-10 w-80">
+                                        <div className="text-xl font-medium text-white">
+                                            Why Choose Findify
+                                        </div>
+                                        <div className="mt-4 text-base leading-relaxed text-white/70">
+                                            Findify is built on trust, transparency, and security. We help protect both buyers and sellers by offering real-time verification, device tracking, and recovery support — all in one platform.
+                                        </div>
+                                        <Link to="#">
+                                            <button data-tw-merge="" className="transition duration-200 border shadow-sm inline-flex items-center justify-center font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-white dark:border-primary rounded-full mt-7 border-white/[0.15] bg-white/5 px-8 py-2.5">View Demo</button>
+                                        </Link>
+                                    </div>
+                                    <div className="box absolute right-0 top-0 -mr-[23%] -mt-10 h-[120%] w-3/4 -rotate-[9deg] overflow-hidden rounded-[0.6rem] p-1">
+                                        <img className="h-full w-full rounded-[0.6rem]" src="https://tailwise-html.vercel.app/dist/images/themes/dagger.png" />
                                     </div>
                                 </div>
                             </div>
