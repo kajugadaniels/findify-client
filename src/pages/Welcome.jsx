@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../assets/img/logo-icon-w.png'
-import { KeySquare, LogIn, Palette, PlayCircleIcon } from 'lucide-react'
+import { FlagTriangleRight, FolderClock, FolderSync, Handshake, KeySquare, LogIn, ShieldCheck, PlayCircleIcon, Smartphone } from 'lucide-react'
 
 const Welcome = () => {
     return (
@@ -63,6 +63,98 @@ const Welcome = () => {
                                     View Demo
                                 </button>
                             </Link>
+                        </div>
+                        <div className="flex w-full flex-col items-center">
+                            <div className="text-3xl font-medium relative">
+                                <div className="z-5 relative text-center text-white">
+                                    Our Services
+                                </div>
+                            </div>
+                            <div className="z-5 relative mt-4 text-center text-white text-slate-500/80">
+                            Findify offers simple tools to verify devices, track ownership, and report stolen <br /> electronics — helping you buy, sell, and protect with confidence.
+                            </div>
+                            <div className="-mx-2.5 mt-10 px-20">
+                                <div className="flex flex-wrap -mx-2">
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <Smartphone className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Device Legitimacy Check
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                Enter a device's serial number to check if it’s reported stolen or lost, helping you avoid buying illegal or suspicious electronics.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <FolderClock className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Ownership History Tracking
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                See the full history of who owned a device before you, making it easier to trust the source and confirm its authenticity.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <FlagTriangleRight className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Stolen Device Reporting
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                Report your lost or stolen device to alert others and prevent it from being sold or reused by unauthorized people.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <FolderSync className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Ownership Transfer System
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                Officially transfer ownership of your device to someone else, creating a secure and verified record of the transaction.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <Handshake className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Recovery Assistance
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                When you report a stolen device, we help track it and notify others to avoid purchases, increasing your chances of recovery.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-8">
+                                        <div className="box box--stacked flex flex-col items-center p-5">
+                                            <div className="h-12 w-12">
+                                                <ShieldCheck className="stroke-[1.3] h-10 w-10" />
+                                            </div>
+                                            <div className="mt-4 text-base font-medium">
+                                                Seller Verification
+                                            </div>
+                                            <div className="mt-2 pb-2 text-center leading-relaxed text-slate-500">
+                                                Check a seller’s history and their listed devices to make sure you're dealing with a trusted and verified <br /> source.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
