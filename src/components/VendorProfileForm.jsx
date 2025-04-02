@@ -1,23 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { updateVendorProfile } from '../api';
 import { toast } from 'react-toastify';
 
-const VendorProfileForm = ({ userId }) => {
+const VendorProfileForm = ({ userId, extendedProfile }) => {
+    // Pre-populate state with extendedProfile data if available.
     const [formData, setFormData] = useState({
-        company_name: '',
-        tin_number: '',
-        business_type: '',
-        email: '',
-        phone: '',
-        website: '',
-        address: '',
-        country: '',
-        district: '',
-        sector: '',
-        cell: '',
-        village: '',
+        company_name: extendedProfile.company_name || '',
+        tin_number: extendedProfile.tin_number || '',
+        business_type: extendedProfile.business_type || '',
+        email: extendedProfile.email || '',
+        phone: extendedProfile.phone || '',
+        website: extendedProfile.website || '',
+        address: extendedProfile.address || '',
+        country: extendedProfile.country || '',
+        district: extendedProfile.district || '',
+        sector: extendedProfile.sector || '',
+        cell: extendedProfile.cell || '',
+        village: extendedProfile.village || '',
     });
     const [loading, setLoading] = useState(false);
+
+    // If extendedProfile changes, update the formData.
+    useEffect(() => {
+        if (extendedProfile) {
+            setFormData({
+                company_name: extendedProfile.company_name || '',
+                tin_number: extendedProfile.tin_number || '',
+                business_type: extendedProfile.business_type || '',
+                email: extendedProfile.email || '',
+                phone: extendedProfile.phone || '',
+                website: extendedProfile.website || '',
+                address: extendedProfile.address || '',
+                country: extendedProfile.country || '',
+                district: extendedProfile.district || '',
+                sector: extendedProfile.sector || '',
+                cell: extendedProfile.cell || '',
+                village: extendedProfile.village || '',
+            });
+        }
+    }, [extendedProfile]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
