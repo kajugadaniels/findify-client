@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AppWindow, UserCog2, Key } from 'lucide-react';
 import { verifyToken } from '../../api';
 import { toast } from 'react-toastify';
-import { ChangePasswordForm, CustomerProfileForm, UpdateUserProfileForm, VendorProfileForm } from '../../components'
+import { ChangePasswordForm, CustomerProfileForm, UpdateUserProfileForm, VendorProfileForm } from '../../components';
 
 const Profile = () => {
     const [activeTab, setActiveTab] = useState("basic");
@@ -25,9 +25,19 @@ const Profile = () => {
     const renderExtendedInfoForm = () => {
         if (!user) return null;
         if (user.role === "Personal") {
-            return <CustomerProfileForm userId={user.id} />;
+            return (
+                <CustomerProfileForm
+                    userId={user.id}
+                    extendedProfile={user.extended_profile || {}}
+                />
+            );
         } else if (user.role === "Vendor" || user.role === "Wholesaler") {
-            return <VendorProfileForm userId={user.id} />;
+            return (
+                <VendorProfileForm
+                    userId={user.id}
+                    extendedProfile={user.extended_profile || {}}
+                />
+            );
         } else {
             return <div>No extended profile available for your role.</div>;
         }
@@ -40,22 +50,19 @@ const Profile = () => {
                 <div className="flex border-b border-gray-200 mb-6">
                     <button
                         onClick={() => setActiveTab("basic")}
-                        className={`px-4 py-2 mr-4 focus:outline-none ${activeTab === "basic" ? "border-b-2 border-primary font-semibold" : "text-gray-500"
-                            }`}
+                        className={`px-4 py-2 mr-4 focus:outline-none ${activeTab === "basic" ? "border-b-2 border-primary font-semibold" : "text-gray-500"}`}
                     >
                         <AppWindow className="inline mr-1 h-4 w-4" /> Basic Info
                     </button>
                     <button
                         onClick={() => setActiveTab("extended")}
-                        className={`px-4 py-2 mr-4 focus:outline-none ${activeTab === "extended" ? "border-b-2 border-primary font-semibold" : "text-gray-500"
-                            }`}
+                        className={`px-4 py-2 mr-4 focus:outline-none ${activeTab === "extended" ? "border-b-2 border-primary font-semibold" : "text-gray-500"}`}
                     >
                         <UserCog2 className="inline mr-1 h-4 w-4" /> Extended Info
                     </button>
                     <button
                         onClick={() => setActiveTab("password")}
-                        className={`px-4 py-2 focus:outline-none ${activeTab === "password" ? "border-b-2 border-primary font-semibold" : "text-gray-500"
-                            }`}
+                        className={`px-4 py-2 focus:outline-none ${activeTab === "password" ? "border-b-2 border-primary font-semibold" : "text-gray-500"}`}
                     >
                         <Key className="inline mr-1 h-4 w-4" /> Change Password
                     </button>
