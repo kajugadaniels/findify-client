@@ -11,12 +11,11 @@ const AppRoutes = () => {
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path="/customer/update/:userId" element={<CustomerProfile />} />
+            <Route path="/vendor/update/:userId" element={<VendorProfile />} />
 
             <Route element={<ProtectedRoute />}>
                 <Route element={<AppLayout />}>
-                    <Route path="/customer/update/:userId" element={<CustomerProfile />} />
-                    <Route path="/vendor/update/:userId" element={<VendorProfile />} />
-
                     <Route path="/dashboard" element={<Dashboard />} />
 
                     <Route path="/users" element={<GetUsers />} />
