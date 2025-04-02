@@ -9,18 +9,14 @@ const Login = () => {
     const [searchParams] = useSearchParams()
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
-
-    // New: track loading state
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        // If user is already logged in, optionally redirect away from login.
         const token = localStorage.getItem('token')
         if (token) {
             navigate('/dashboard')
         }
 
-        // Check if there's an error param in the URL
         const errorParam = searchParams.get('error')
         if (errorParam === 'unauthorized') {
             toast.error('Unauthorized user cannot access that page. Please log in.')
@@ -29,18 +25,13 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-
         try {
-            setLoading(true) // Start loading
+            setLoading(true)
             const response = await loginUser(identifier, password)
-            // response => { token, user, message, etc. }
-
-            // Store token
-            localStorage.setItem('token', response.token)
-            localStorage.setItem('user', JSON.stringify(response.user))
+            // Backend returns "access" and "refresh"
+            localStorage.setItem('token', response.access)
+            localStorage.setItem('refresh', response.refresh)
             toast.success(response.message || 'Login successful.')
-
-            // Redirect to a protected route
             navigate('/dashboard')
         } catch (error) {
             if (error.response && error.response.data && error.response.data.error) {
@@ -49,7 +40,7 @@ const Login = () => {
                 toast.error('Login failed. Please check your credentials.')
             }
         } finally {
-            setLoading(false) // End loading
+            setLoading(false)
         }
     }
 
