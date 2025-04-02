@@ -97,7 +97,7 @@ const Navbar = ({ toggleSidebar }) => {
                             >
                                 <div className="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-1 w-56">
                                     <div className="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400"></div>
-                                    <Link to="" className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                    <Link to="/profile" className="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
                                         <Users className="stroke-[1] mr-2 h-4 w-4" />
                                         Profile Info
                                     </Link>

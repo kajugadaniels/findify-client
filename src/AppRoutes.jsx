@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { AddUser, CustomerProfile, Dashboard, EditUser, GetUsers, Login, NotFound, Register, UserDetails, VendorProfile, Welcome } from './pages'
+import { AddUser, CustomerProfile, Dashboard, EditUser, GetUsers, Login, NotFound, Profile, Register, UserDetails, VendorProfile, Welcome } from './pages'
 
 const AppRoutes = () => {
     return (
@@ -22,6 +22,8 @@ const AppRoutes = () => {
                     <Route path="/user/add" element={<AddUser />} />
                     <Route path="/user/:id" element={<UserDetails />} />
                     <Route path="/user/edit/:id" element={<EditUser />} />
+
+                    <Route path="/profile" element={<Profile />} />
                 </Route>
             </Route>
 
