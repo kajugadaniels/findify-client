@@ -93,3 +93,12 @@ export const passwordResetRequest = async (email) => {
         throw error;
     }
 };
+
+export const passwordResetConfirm = async (data) => {
+    try {
+        const response = await apiClient.post('/auth/password-reset-confirm/', data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
