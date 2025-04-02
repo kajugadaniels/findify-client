@@ -43,7 +43,11 @@ const Register = () => {
                 navigate('/dashboard');
             }
         } catch (error) {
-            toast.error("Registration failed. Please try again.");
+            console.error("Registration error:", error.response.data);
+            const errorMessage = error.response.data.errors
+                ? JSON.stringify(error.response.data.errors)
+                : "Registration failed. Please try again.";
+            toast.error(errorMessage);
         } finally {
             setLoading(false);
         }
