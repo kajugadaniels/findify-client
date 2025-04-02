@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './layouts/AppLayout'
 import ProtectedRoute from './lib/ProtectedRoute'
-import { AddUser, Dashboard, EditUser, GetUsers, Login, NotFound, Register, UserDetails, Welcome } from './pages'
+import { AddUser, CustomerProfile, Dashboard, EditUser, GetUsers, Login, NotFound, Register, UserDetails, VendorProfile, Welcome } from './pages'
 
 const AppRoutes = () => {
     return (
@@ -14,6 +14,9 @@ const AppRoutes = () => {
 
             <Route element={<ProtectedRoute />}>
                 <Route element={<AppLayout />}>
+                    <Route path="/customer/update/:userId" element={<CustomerProfile />} />
+                    <Route path="/vendor/update/:userId" element={<VendorProfile />} />
+
                     <Route path="/dashboard" element={<Dashboard />} />
 
                     <Route path="/users" element={<GetUsers />} />
