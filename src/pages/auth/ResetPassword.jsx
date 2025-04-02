@@ -41,7 +41,18 @@ const ResetPassword = () => {
             localStorage.removeItem('passwordResetEmail');
             navigate('/login');
         } catch (error) {
-            toast.error("Failed to reset password. Please try again.");
+            let errorMessage = "Failed to reset password. Please try again.";
+            if (error.response && error.response.data) {
+                if (error.response.data.detail) {
+                    errorMessage = error.response.data.detail;
+                } else if (error.response.data.errors) {
+                    const errors = error.response.data.errors;
+                    errorMessage = Object.keys(errors)
+                        .map((field) => `${field}: ${errors[field].join(", ")}`)
+                        .join(" ");
+                }
+            }
+            toast.error(errorMessage);
         } finally {
             setLoading(false);
         }
