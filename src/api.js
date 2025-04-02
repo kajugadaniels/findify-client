@@ -13,7 +13,7 @@ apiClient.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
         if (token) {
-            config.headers.Authorization = `Token ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
@@ -28,10 +28,11 @@ apiClient.interceptors.response.use(
     },
     (error) => {
         if (error.response && error.response.status === 401) {
-            // Handle invalid token scenario
             console.error('Unauthorized access. Please log in again.');
-            // Optionally, clear the token and redirect to login page
+            // Clear stored tokens and user data
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('refresh');
             window.location.href = '/';
         }
         return Promise.reject(error);
@@ -49,12 +50,13 @@ export const loginUser = async (identifier, password) => {
 
 export const logoutUser = async () => {
     try {
-        const response = await apiClient.post('/auth/logout/')
-        return response.data
+        const refreshToken = localStorage.getItem('refresh');
+        const response = await apiClient.post('/auth/logout/', { refresh: refreshToken });
+        return response.data;
     } catch (error) {
-        throw error
+        throw error;
     }
-}
+};
 
 export const updateUserProfile = async (updateData) => {
     try {
