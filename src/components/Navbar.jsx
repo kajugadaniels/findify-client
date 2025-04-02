@@ -12,23 +12,17 @@ const Navbar = ({ toggleSidebar }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Retrieve user information from localStorage
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             setUserName(user.name || 'User');
-            // Assuming `user.role` is an object, extract its `name` or another property
             setUserRole(user.role_name || 'Role');
         }
 
         const handleScroll = () => {
-            // Set `isScrolled` to true if the page is scrolled down more than 10px
             setIsScrolled(window.scrollY > 10);
         };
 
-        // Add scroll event listener
         window.addEventListener('scroll', handleScroll);
-
-        // Cleanup function to remove event listener
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -40,19 +34,16 @@ const Navbar = ({ toggleSidebar }) => {
 
     const handleLogout = async () => {
         try {
-            // (Optional) If you want to notify the backend to delete the token:
-            await logoutUser()
-
-            // Clear local storage
-            localStorage.removeItem('token')
-            localStorage.removeItem('user')
-
-            toast.success('You have successfully logged out.')
-            navigate('/')
+            await logoutUser();
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('refresh');
+            toast.success('You have successfully logged out.');
+            navigate('/');
         } catch (error) {
-            toast.error('An error occurred during logout. Please try again.')
+            toast.error('An error occurred during logout. Please try again.');
         }
-    }
+    };
 
     return (
         <div className="fixed h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px] mt-3.5 inset-x-0 top-0 before:content-[''] before:mx-5 before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur">
