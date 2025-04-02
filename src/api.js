@@ -66,3 +66,12 @@ export const updateUserProfile = async (updateData) => {
         throw error;
     }
 };
+
+export const verifyToken = async () => {
+    try {
+        const response = await apiClient.get('/auth/verify_token/');
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
