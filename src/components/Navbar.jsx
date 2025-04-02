@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { logoutUser } from '../api';
+import { logoutUser, verifyToken } from '../api';
 import { toast } from 'react-toastify';
 import { AlignJustify, Users, Search, Power } from 'lucide-react';
 
 const Navbar = ({ toggleSidebar }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [userName, setUserName] = useState('');
-    const [userRole, setUserRole] = useState('');
+    const [userName, setUserName] = useState('User');
+    const [userRole, setUserRole] = useState('Role');
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            setUserName(user.name || 'User');
-            setUserRole(user.role_name || 'Role');
-        }
+        const fetchUserData = async () => {
+            try {
+                const response = await verifyToken();
+                if (response && response.user) {
+                    const user = response.user;
+                    setUserName(user.name || 'User');
+                    // Adjust based on the actual field name returned (e.g., user.role or user.role_name)
+                    setUserRole(user.role || user.role_name || 'Role');
+                    localStorage.setItem('user', JSON.stringify(user));
+                }
+            } catch (error) {
+                console.error('Error verifying token:', error);
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+            }
+        };
+
+        fetchUserData();
 
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
