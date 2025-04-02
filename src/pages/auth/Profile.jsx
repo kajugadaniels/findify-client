@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppWindow, ExternalLink, Info } from 'lucide-react'
+import { AppWindow, ExternalLink, Info, Key, UserCog2 } from 'lucide-react'
 
 const Profile = () => {
     return (
@@ -24,7 +24,15 @@ const Profile = () => {
                                         <div className="box box--stacked flex flex-col px-5 pb-6 pt-5">
                                             <a href="#" className="flex items-center py-3 first:-mt-3 last:-mb-3 [&.active]:text-primary [&.active]:font-medium hover:text-primary active">
                                                 <AppWindow className="mr-3 h-4 w-4 stroke-[1.3]" />
+                                                Profile InfoProfile Info
+                                            </a>
+                                            <a href="#" className="flex items-center py-3 first:-mt-3 last:-mb-3 [&.active]:text-primary [&.active]:font-medium hover:text-primary active">
+                                                <UserCog2 className="mr-3 h-4 w-4 stroke-[1.3]" />
                                                 Profile Info
+                                            </a>
+                                            <a href="#" className="flex items-center py-3 first:-mt-3 last:-mb-3 [&.active]:text-primary [&.active]:font-medium hover:text-primary active">
+                                                <Key className="mr-3 h-4 w-4 stroke-[1.3]" />
+                                                Change Password
                                             </a>
                                         </div>
                                     </div>
